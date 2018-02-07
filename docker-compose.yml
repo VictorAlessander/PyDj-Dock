@@ -1,11 +1,19 @@
-db:
-  image: django
-web:
-  build: .
-  command: python manage.py runserver 0.0.0.0:8000
-  volumes:
-    - .:/code
-  ports:
-    - "8000:8000"
-  links:
-  - db
+version: '3'
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: buyeasyuser
+      POSTGRES_DB: buyeasy
+  web:
+    build: .
+    # command: gunicorn -b 0.0.0.0:8000 buyeasy.wsgi:application
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - postgres
+    volumes:
+      - .:/home/dockuser/code
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgres://buyeasyapp@postgres/buyeasy
