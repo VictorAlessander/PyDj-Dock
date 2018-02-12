@@ -1,6 +1,6 @@
 To create your image using something like a namespace
 
-> docker build -t <name:tag> .
+> docker build -t "name:tag" .
 
 
 To build your container based in images
@@ -14,6 +14,6 @@ If you doesn't want to save cache
 
 After you start this with docker-compose up, you can easily shell into either your database container or your web container with
 
-> docker-compose exec <databasecontainer> sh
+> docker-compose exec "databasecontainer" sh
 
-> docker-compose exec <webcontainer> sh
+> docker-compose exec "webcontainer" sh
