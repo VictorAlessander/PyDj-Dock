@@ -3,8 +3,8 @@ services:
   postgres:
     image: postgres
     environment:
-      POSTGRES_USER: buyeasyuser
-      POSTGRES_DB: buyeasy
+      POSTGRES_USER: "aliasuser"
+      POSTGRES_DB: "alias"
   web:
     build: .
     # command: gunicorn -b 0.0.0.0:8000 buyeasy.wsgi:application
@@ -16,4 +16,4 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgres://buyeasyapp@postgres/buyeasy
+      DATABASE_URL: postgres://"aliasapp"@postgres/"alias"
